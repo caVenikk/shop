@@ -1,2 +1,5 @@
 # Environ
 .env
+
+# IDE
+.vscode/

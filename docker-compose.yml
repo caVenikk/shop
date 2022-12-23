@@ -23,23 +23,6 @@ services:
           cpus: '0.3'
           memory: 300M
     restart: unless-stopped
-  
-  # nginx:
-  #   image: nginx:1.19-alpine
-  #   container_name: shop-proxy
-  #   depends_on:
-  #     - api
-  #   environment:
-  #     DOMAIN_NAME: ${DOMAIN_NAME}
-  #   ports:
-  #     - "8080:80"
-  #     - "8081:81"
-  #   volumes:
-  #     - ./nginx.conf:/etc/nginx/conf.d/default.conf
-  #     - ./shop-webapp/dist/:/dist:ro
-  #     - ./shop-webapp/:/shop-webapp/:ro
-  #   networks:
-  #     - shop
     
   webapp:
     container_name: shop-webapp-container
