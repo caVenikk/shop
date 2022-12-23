@@ -1,2 +1,2 @@
 # Shop
-Merged repository for shop app
+Main repository for shop app
