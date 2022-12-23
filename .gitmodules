@@ -1,0 +1,6 @@
+[submodule "shop-api"]
+	path = shop-api
+	url = git@github.com:caVenikk/shop-api.git
+[submodule "shop-webapp"]
+	path = shop-webapp
+	url = git@github.com:caVenikk/shop-webapp.git
