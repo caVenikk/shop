@@ -4,3 +4,6 @@
 [submodule "shop-webapp"]
 	path = shop-webapp
 	url = git@github.com:caVenikk/shop-webapp.git
+[submodule "shop-bot"]
+	path = shop-bot
+	url = git@github.com:caVenikk/shop-bot.git

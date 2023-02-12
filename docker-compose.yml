@@ -12,7 +12,7 @@ services:
     networks:
       - shop
     ports:
-      - "8080:8080"
+      - "8080:8000"
     depends_on:
       - postgresql
     command: >
@@ -36,6 +36,26 @@ services:
       - .env
     networks:
       - shop
+
+  bot:
+    container_name: shop-bot-container
+    image: shop-bot-image:0.1.0
+    build:
+      context: ./shop-bot/
+    command: >
+      sh -c "python -m bot"
+    env_file:
+      - .env
+    networks:
+      - shop
+    depends_on:
+      - postgresql
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
+    restart: unless-stopped
   
   postgresql:
     image: postgres:15.1
