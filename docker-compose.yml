@@ -9,19 +9,18 @@ services:
       - .env
     environment:
       DB_HOST: "postgresql"
+    volumes:
+      - ./shop-api/images:/shop-api/images
     networks:
       - shop
+    links:
+      - bot
     ports:
       - "8080:8000"
     depends_on:
       - postgresql
     command: >
-      sh -c "alembic upgrade head && uvicorn src.api.app:app --port 8000 --host 0.0.0.0"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: 300M
+      sh -c "alembic upgrade head && uvicorn src.api.app:app --port 8000 --host 0.0.0.0 --log-level debug"
     restart: unless-stopped
     
   webapp:
@@ -48,18 +47,17 @@ services:
       - .env
     networks:
       - shop
+    ports:
+      - "8888:8888"
     depends_on:
       - postgresql
-    deploy:
-      resources:
-        limits:
-          cpus: '0.3'
-          memory: 300M
     restart: unless-stopped
   
   postgresql:
     image: postgres:15.1
     container_name: shop-database-container
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -103,7 +101,9 @@ services:
   
 networks:
   shop:
-    name: ${CONTAINER_NETWORK}
     driver: bridge
+    external:
+      name: ${CONTAINER_NETWORK}
 volumes:
   postgresql-data-volume:
+    

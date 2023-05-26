@@ -2,10 +2,12 @@
 
 ## Table of contents
 
-- [General info](#general-info)
-- [Technologies](#technologies)
-- [Setup](#setup)
-- [Implementation example](#implementation-example)
+- [Online food shop](#online-food-shop)
+  - [Table of contents](#table-of-contents)
+  - [General info](#general-info)
+  - [Technologies](#technologies)
+  - [Setup](#setup)
+  - [Implementation example](#implementation-example)
 
 ## General info
 
@@ -30,15 +32,15 @@ Firstly, install docker and docker-compose (Ubuntu):
 
 Next step is executing two commands, that will build and run app:
 
-```
-$ docker-compose build
-$ docker-compose up -d
+```bash
+docker-compose build
+docker-compose up -d
 ```
 
 or
 
-```
-$ docker-compose build && docker-compose up -d
+```bash
+docker-compose build && docker-compose up -d
 ```
 
 ## Implementation example
